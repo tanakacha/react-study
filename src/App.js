@@ -1,26 +1,40 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function MyApp() {
-  const [count, setCount] = useState(0);
-  
+function Square() {
+  const [value, setValue] = useState(null);
+
   function handleClick() {
-    setCount(count + 1);
+    setValue('X');
   }
 
   return (
-    <div>
-      <h1>Counters that update separately</h1>
-      <MyButton count={count} onClick={handleClick}/>
-      <MyButton count={count} onClick={handleClick}/>
-    </div>
+    <button
+      className="square"
+      onClick={handleClick}
+    >
+      {value}
+    </button>
   );
 }
 
-function MyButton({ count, onClick }) {
-
+export default function Board() {
   return (
-    <button onClick={onClick}>
-      Clicked {count} times
-    </button>
+    <>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+    </>
   );
 }
